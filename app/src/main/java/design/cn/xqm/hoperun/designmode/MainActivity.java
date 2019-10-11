@@ -10,6 +10,9 @@ import java.lang.reflect.Proxy;
 
 import design.cn.xqm.hoperun.designmode.adapter.MicroUsb;
 import design.cn.xqm.hoperun.designmode.adapter.TypeCAdater;
+import design.cn.xqm.hoperun.designmode.component.BranchFirm;
+import design.cn.xqm.hoperun.designmode.component.Firm;
+import design.cn.xqm.hoperun.designmode.component.Test;
 import design.cn.xqm.hoperun.designmode.decorator.AddDrumstickFriedRice;
 import design.cn.xqm.hoperun.designmode.decorator.AddEggFriedRice;
 import design.cn.xqm.hoperun.designmode.decorator.FriedRice;
@@ -91,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
         computerss.start();
         Log.e("xqm","================");
         computerss.shutDown();
+
+        //组合模式
+        Test dd = new Test();
+        dd.testDemo();
     }
 
 
