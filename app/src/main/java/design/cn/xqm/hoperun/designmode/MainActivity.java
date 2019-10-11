@@ -27,6 +27,10 @@ import design.cn.xqm.hoperun.designmode.proxy.ISinger;
 import design.cn.xqm.hoperun.designmode.proxy.staticproxy.Singer;
 import design.cn.xqm.hoperun.designmode.proxy.staticproxy.SingerProxy;
 import design.cn.xqm.hoperun.designmode.singleton.SignletonMode;
+import design.cn.xqm.hoperun.designmode.strategy.BussCar;
+import design.cn.xqm.hoperun.designmode.strategy.Car;
+import design.cn.xqm.hoperun.designmode.strategy.Person;
+import design.cn.xqm.hoperun.designmode.strategy.SmallCar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,6 +102,14 @@ public class MainActivity extends AppCompatActivity {
         //组合模式
         Test dd = new Test();
         dd.testDemo();
+
+        //策略模式
+        Car smallcar = new SmallCar("路虎","黑色");
+        Car busscar = new BussCar("公交车","白色");
+        Person person = new Person("小明","20");
+        person.driver(smallcar);
+        person.driver(busscar);
+
     }
 
 
