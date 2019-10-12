@@ -22,6 +22,9 @@ import design.cn.xqm.hoperun.designmode.directorcreate.IphoneX;
 import design.cn.xqm.hoperun.designmode.facade.Computer;
 import design.cn.xqm.hoperun.designmode.factory.CommonFactory.SendFactory;
 import design.cn.xqm.hoperun.designmode.factory.CommonFactory.SenderI;
+import design.cn.xqm.hoperun.designmode.observable.TargetObservable;
+import design.cn.xqm.hoperun.designmode.observable.TargetObserver;
+import design.cn.xqm.hoperun.designmode.observable.TargetObserver01;
 import design.cn.xqm.hoperun.designmode.prototype.PrototypeMode;
 import design.cn.xqm.hoperun.designmode.proxy.ISinger;
 import design.cn.xqm.hoperun.designmode.proxy.staticproxy.Singer;
@@ -31,6 +34,8 @@ import design.cn.xqm.hoperun.designmode.strategy.BussCar;
 import design.cn.xqm.hoperun.designmode.strategy.Car;
 import design.cn.xqm.hoperun.designmode.strategy.Person;
 import design.cn.xqm.hoperun.designmode.strategy.SmallCar;
+import design.cn.xqm.hoperun.designmode.template.HumanMode;
+import design.cn.xqm.hoperun.designmode.template.HumanModeIm;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -110,6 +115,22 @@ public class MainActivity extends AppCompatActivity {
         person.driver(smallcar);
         person.driver(busscar);
 
+        //模板模式
+        HumanMode humanMode = new HumanModeIm();
+        humanMode.lifeDay();
+
+        //观察者模式
+        TargetObservable observable = new TargetObservable();
+        TargetObserver one = new TargetObserver();
+        one.setObserverName("我是观察者A");
+
+        TargetObserver01 two = new TargetObserver01();
+        two.setObserverName("我是观察者B");
+        //注册观察者
+        observable.addObserver(one);
+        observable.addObserver(two);
+
+        observable.setMessage("****我要更新的数据***");
     }
 
 
