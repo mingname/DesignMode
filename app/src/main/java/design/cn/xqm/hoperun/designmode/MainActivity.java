@@ -29,6 +29,11 @@ import design.cn.xqm.hoperun.designmode.prototype.PrototypeMode;
 import design.cn.xqm.hoperun.designmode.proxy.ISinger;
 import design.cn.xqm.hoperun.designmode.proxy.staticproxy.Singer;
 import design.cn.xqm.hoperun.designmode.proxy.staticproxy.SingerProxy;
+import design.cn.xqm.hoperun.designmode.purchaselink.Approver;
+import design.cn.xqm.hoperun.designmode.purchaselink.Congress;
+import design.cn.xqm.hoperun.designmode.purchaselink.President;
+import design.cn.xqm.hoperun.designmode.purchaselink.PurchaseRequest;
+import design.cn.xqm.hoperun.designmode.purchaselink.VicePresident;
 import design.cn.xqm.hoperun.designmode.singleton.SignletonMode;
 import design.cn.xqm.hoperun.designmode.strategy.BussCar;
 import design.cn.xqm.hoperun.designmode.strategy.Car;
@@ -131,6 +136,26 @@ public class MainActivity extends AppCompatActivity {
         observable.addObserver(two);
 
         observable.setMessage("****我要更新的数据***");
+
+        //责任链模式
+        Approver a1,a2,a3,a4;
+        a1 = new design.cn.xqm.hoperun.designmode.purchaselink.Director("LW");
+        a2 = new VicePresident("LWQ");
+        a3 = new President("小木木");
+        a4 = new Congress("海贼王");
+        //创建审批链
+        a1.setApprover(a2);
+        a2.setApprover(a3);
+        a3.setApprover(a4);
+        //创建单据
+        PurchaseRequest p1 = new PurchaseRequest("购买倚天剑",10001,9999);
+        a1.handlePurchaseRequest(p1);
+        p1 = new PurchaseRequest("购买屠龙刀",10002,49999);
+        a1.handlePurchaseRequest(p1);
+        p1 = new PurchaseRequest("购买葵花宝典",10003,99999);
+        a1.handlePurchaseRequest(p1);
+        p1 = new PurchaseRequest("购买桃花岛",10004,91239999);
+        a1.handlePurchaseRequest(p1);
     }
 
 
