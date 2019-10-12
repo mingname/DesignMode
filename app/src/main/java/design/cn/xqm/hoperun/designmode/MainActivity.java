@@ -10,6 +10,11 @@ import java.lang.reflect.Proxy;
 
 import design.cn.xqm.hoperun.designmode.adapter.MicroUsb;
 import design.cn.xqm.hoperun.designmode.adapter.TypeCAdater;
+import design.cn.xqm.hoperun.designmode.command.AddRequirementCommand;
+import design.cn.xqm.hoperun.designmode.command.Command;
+import design.cn.xqm.hoperun.designmode.command.Group;
+import design.cn.xqm.hoperun.designmode.command.Invoker;
+import design.cn.xqm.hoperun.designmode.command.RequirementGroup;
 import design.cn.xqm.hoperun.designmode.component.BranchFirm;
 import design.cn.xqm.hoperun.designmode.component.Firm;
 import design.cn.xqm.hoperun.designmode.component.Test;
@@ -156,6 +161,20 @@ public class MainActivity extends AppCompatActivity {
         a1.handlePurchaseRequest(p1);
         p1 = new PurchaseRequest("购买桃花岛",10004,91239999);
         a1.handlePurchaseRequest(p1);
+        //命令模式
+        Group rg = new RequirementGroup();
+        rg.find();//找到需求组
+        rg.add();//新增需求
+        rg.plan();//列出需求变更计划
+
+        //定义张三为接头人
+        Invoker zhangsan = new Invoker();
+
+        //客户下命令
+        Command command = new AddRequirementCommand();
+        //接头人接受命令
+        zhangsan.setCommand(command);
+        zhangsan.action();
     }
 
 
