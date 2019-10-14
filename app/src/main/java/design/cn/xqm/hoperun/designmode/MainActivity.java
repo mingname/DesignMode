@@ -27,6 +27,9 @@ import design.cn.xqm.hoperun.designmode.directorcreate.IphoneX;
 import design.cn.xqm.hoperun.designmode.facade.Computer;
 import design.cn.xqm.hoperun.designmode.factory.CommonFactory.SendFactory;
 import design.cn.xqm.hoperun.designmode.factory.CommonFactory.SenderI;
+import design.cn.xqm.hoperun.designmode.memento.Han;
+import design.cn.xqm.hoperun.designmode.memento.History;
+import design.cn.xqm.hoperun.designmode.memento.SiMaQian;
 import design.cn.xqm.hoperun.designmode.observable.TargetObservable;
 import design.cn.xqm.hoperun.designmode.observable.TargetObserver;
 import design.cn.xqm.hoperun.designmode.observable.TargetObserver01;
@@ -175,6 +178,30 @@ public class MainActivity extends AppCompatActivity {
         //接头人接受命令
         zhangsan.setCommand(command);
         zhangsan.action();
+
+        //备忘录
+        Han han = new Han();//大汉帝国
+        Log.e("xqm","汉武帝建元年间，司马到长安任太史令");
+        SiMaQian siMaQian = new SiMaQian();
+        han.setThing("天下大旱");//公园前108年
+        History h = new History(han.getThing());
+        siMaQian.addHistoryList("公元前108年",h);
+
+        han.setThing("汉朝立法改革，制定《汉历》");//公元前104年
+        History h1 = new History(han.getThing());
+        siMaQian.addHistoryList("公元前104年",h1);
+
+        han.setThing("李陵率步兵五千涉单于庭以寡击众，粮尽矢绝后，被迫投降");//公元前99年
+        History h2 = new History(han.getThing());
+        siMaQian.addHistoryList("公元前99年",h2);
+
+        Log.e("xqm","公元前108年"+siMaQian.getHistoryList("公元前108年").getThing());
+        Log.e("xqm","公元前104年"+siMaQian.getHistoryList("公元前104年").getThing());
+        Log.e("xqm","公元前99年"+siMaQian.getHistoryList("公元前99年").getThing());
+
+
+
+
     }
 
 
