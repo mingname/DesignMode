@@ -43,6 +43,9 @@ import design.cn.xqm.hoperun.designmode.purchaselink.President;
 import design.cn.xqm.hoperun.designmode.purchaselink.PurchaseRequest;
 import design.cn.xqm.hoperun.designmode.purchaselink.VicePresident;
 import design.cn.xqm.hoperun.designmode.singleton.SignletonMode;
+import design.cn.xqm.hoperun.designmode.state.BookedState;
+import design.cn.xqm.hoperun.designmode.state.FreeState;
+import design.cn.xqm.hoperun.designmode.state.HomeContext;
 import design.cn.xqm.hoperun.designmode.strategy.BussCar;
 import design.cn.xqm.hoperun.designmode.strategy.Car;
 import design.cn.xqm.hoperun.designmode.strategy.Person;
@@ -199,7 +202,10 @@ public class MainActivity extends AppCompatActivity {
         Log.e("xqm","公元前104年"+siMaQian.getHistoryList("公元前104年").getThing());
         Log.e("xqm","公元前99年"+siMaQian.getHistoryList("公元前99年").getThing());
 
-
+        //状态模式
+        HomeContext ctx = new HomeContext();
+        ctx.setState(new FreeState());
+        ctx.setState(new BookedState());
 
 
     }
