@@ -27,6 +27,9 @@ import design.cn.xqm.hoperun.designmode.directorcreate.IphoneX;
 import design.cn.xqm.hoperun.designmode.facade.Computer;
 import design.cn.xqm.hoperun.designmode.factory.CommonFactory.SendFactory;
 import design.cn.xqm.hoperun.designmode.factory.CommonFactory.SenderI;
+import design.cn.xqm.hoperun.designmode.mediator.ColleagueB;
+import design.cn.xqm.hoperun.designmode.mediator.Colleagueclass;
+import design.cn.xqm.hoperun.designmode.mediator.ConcreateMediator;
 import design.cn.xqm.hoperun.designmode.memento.Han;
 import design.cn.xqm.hoperun.designmode.memento.History;
 import design.cn.xqm.hoperun.designmode.memento.SiMaQian;
@@ -206,6 +209,18 @@ public class MainActivity extends AppCompatActivity {
         HomeContext ctx = new HomeContext();
         ctx.setState(new FreeState());
         ctx.setState(new BookedState());
+
+        //中介者模式
+        ConcreateMediator mediator = new ConcreateMediator();
+        Colleagueclass colleagueclass = new Colleagueclass("张三",mediator);
+        ColleagueB colleagueB = new ColleagueB("李四",mediator);
+        //中介者知晓每一个具体的Colleague类
+        mediator.setCollA(colleagueclass);
+        mediator.setCollB(colleagueB);
+
+        colleagueclass.contact("我是A，我要和同事B说说工作的事情");
+        colleagueB.contact("我是B，我下午有时间，下午商量吧");
+
 
 
     }
